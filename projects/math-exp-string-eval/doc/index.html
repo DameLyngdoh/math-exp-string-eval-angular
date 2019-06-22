@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Math Expression String Evaluation Utility</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">Math Expression String Evaluation Utility</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="math-expression-string-evaluator">Math Expression String Evaluator</h1>
+<p>This is an Angular library which provides a service for evaluating mathematical expressions of string type and return a number. This library does not use the <strong>eval</strong> function which is a built-in JavaScript utility.
+This library was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 7.2.0.</p>
+<p><strong>Note:</strong> All <code>import</code> statements within this sample code or elaborated in this document will either include <code>projects/math-exp-string-eval/src/public-api</code> or <code>d</code> depending on how the library was installed. Refer to Installation.</p>
+<h2 id="documentation">Documentation</h2>
+<p>To view the documentation, open <code>doc/index.html</code>. The documentation was generated using <a href="https://compodoc.app/">Compodoc</a> tool. Compodoc is a useful tool for generating documentation for your Angular applications.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="using-npm">Using NPM</h3>
+<p>To install the library using npm:
+<code>sh
+npm i dl-math-exp-string-eval</code>
+This installation will include the import statement:
+```typescript
+// For module import in app.modeul.ts
+import { ExpMathStringEvalModule } from &#39;../../node_modules/dl-math-exp-string-eval&#39;;</p>
+<p>// For service import in component
+import { ExpMathStringEvalService } from &#39;../../node_modules/dl-math-exp-string-eval&#39;;
+```</p>
+<h3 id="manual">Manual</h3>
+<p>If you have cloned this repository and wish to use the library without installation through the Node Package Manager, then you can build the library by running:
+<code>sh
+ng build math-exp-string-eval</code>
+This will generate a module in <code>dist</code> directory by the name <code>math-exp-string-eval</code>.
+To manually add the library to your application, copy directory <code>dist/math-exp-string-eval</code>, in this repository, to your application&#39;s <code>dist</code> directory. In case if your application directory does not have a <code>dist</code> directory then create one.
+The import statements will include:
+```typescript
+// For module import in app.modeul.ts
+import { ExpMathStringEvalModule } from &#39;math-exp-string-eval&#39;;</p>
+<p>// For service import in component
+import { MathExpStringEvalService } from &#39;math-exp-string-eval&#39;;
+```</p>
+<h2 id="library-import">Library Import</h2>
+<p>In the <code>app.module.ts</code> (or any module configuration) add <code>ExpMathStringEvalModule</code> to the <code>imports</code> array int <code>@NgModule</code> decorator. Then add the following line in the imports section of the module file:</p>
+<div><pre class="line-numbers"><code class="language-none">import { ExpMathStringEvalModule } from  &#39;projects/math-exp-string-eval/src/public-api&#39;;</code></pre></div><p> This is for the case when the library is present within the <code>projects</code> directory. In case if the library is within <code>node_modules</code>, then make the changes accrodingly.</p>
+<h2 id="description">Description</h2>
+<p>The library evaluates a string expression through:</p>
+<ol>
+<li>Tokenizing - A token can be a number, an operator, opening or closing parenthesis or a function name.</li>
+<li>Evaluating unary operations - Expression of the type <code>(-n)</code> where <strong>n</strong> is a whole number are evaluated next.</li>
+<li>Evaluating functions - Functions can be included in the expression and they are evaluated next.</li>
+<li>Evaluating final native expression - A native expression is one where there are no functions or unary operations existing within the expression.</li>
+</ol>
+<h3 id="token">Token</h3>
+<p>A token represents an independent entity of the expression which has a unique purpose within the expression. There are seven types of tokens: <strong>Operator</strong>, <strong>Operand</strong>, <strong>OpenParenthesis</strong>, <strong>CloseParenthesis</strong>, <strong>DecimalPoint</strong>, <strong>FunctionName</strong> and <strong>Comma</strong>. Of these only <strong>DecimalPoint</strong> and <strong>Comma</strong> will not be tokenized into individual tokens. A token is represented by the <code>DMEToken</code> class which has the following:
+| Field | Type | Description |
+|--|--|--|
+| type | enum - TokenType | Specifies the type of token from the TokenType enum. |
+| value | any | The value of the token, for a number the value is the value of the number. |</p>
+<h3 id="function">Function</h3>
+<p>A function can be used within an expression provided it is defined within an object of type <code>any</code> and passed in the second paremeter of the evaluating methods. A function takes the form <code>f1.f2...fn(param1, param2,..., paramN)</code>.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="1-configuring-app-module">1. Configuring App Module</h3>
+<p>Import the module into <code>app.module.ts</code>. If the library is in <code>dist</code> directory then use:
+<code>typescript
+import { ExpMathStringEvalModule } from &#39;math-exp-string-eval&#39;</code>
+But if the library is within <code>node_modules</code>, installed using <code>npm</code> then use:
+<code>typescript
+import { ExpMathStringEvalModule } from &#39;../../node_modules/dl-math-exp-string-eval&#39;</code>
+Add <code>ExpMathStringEvalModule</code> to the <code>imports</code> array in the <code>@NgModule</code> decorator of the application module file (usually named <code>app.module.ts</code> inside <code>app</code> component directory). A sample <code>@NgModule</code> decorator should look like this:
+<code>typescript
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    ExpMathStringEvalModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})</code>
+Once <code>app.module.ts</code> is configured, the service can now be injected into your components.</p>
+<h3 id="2-service-injection">2. Service Injection</h3>
+<p>To use the service within a component (or wherever necessary), the service has to be injected into that component. A sample code for injecting the service into the app component:
+```typescript
+<other imports>
+import { ExpMathStringEvalService } from &#39;math-exp-string-eval&#39;;</p>
+<p>@Component({
+  selector: &#39;app-root&#39;,
+  templateUrl: &#39;./app.component.html&#39;,
+  styleUrls: [&#39;./app.component.css&#39;]
+})</p>
+<p>constructor(private ser : ExpMathStringEvalService) { }
+```
+The above code injects the service into the constructor of the app component.</p>
+<h2 id="demo">Demo</h2>
+<p>Run <code>ng serve</code> in this application and open the developer console to view the results.
+The demo code is present within <code>app.component.ts</code>. This application takes an expression in a string and the service is injected in the constructor in <code>app.component.ts</code>. There is an object which contains functions which are passed into the second argument of the evaluator method. Finally, there is invocation of the <code>Math.sin</code> method which is not defined in the list function, this is to demonstrate the look up which the service performs on the <code>Math</code> object of JS&#39;s library.</p>
+<p>To run the demo, first build the library:
+<code>sh
+ng build math-exp-string-eval</code>
+and then run the application using Angular CLI&#39;s tool:
+<code>sh
+ng serve</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
