@@ -54,6 +54,7 @@ The library evaluates a string expression through:
 
 ### Token
 A token represents an independent entity of the expression which has a unique purpose within the expression. There are seven types of tokens: **Operator**, **Operand**, **OpenParenthesis**, **CloseParenthesis**, **DecimalPoint**, **FunctionName** and **Comma**. Of these only **DecimalPoint** and **Comma** will not be tokenized into individual tokens. A token is represented by the `DMEToken` class which has the following:
+
 | Field | Type | Description |
 |--|--|--|
 | type | enum - TokenType | Specifies the type of token from the TokenType enum. |
