@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "math-exp-string-eval": [
+        "dist/math-exp-string-eval"
+      ],
+      "math-exp-string-eval/*": [
+        "dist/math-exp-string-eval/*"
+      ]
+    }
   }
 }

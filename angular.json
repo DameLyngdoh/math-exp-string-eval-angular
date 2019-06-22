@@ -130,6 +130,41 @@
           }
         }
       }
+    },
+    "math-exp-string-eval": {
+      "root": "projects/math-exp-string-eval",
+      "sourceRoot": "projects/math-exp-string-eval/src",
+      "projectType": "library",
+      "prefix": "dl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/math-exp-string-eval/tsconfig.lib.json",
+            "project": "projects/math-exp-string-eval/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/math-exp-string-eval/src/test.ts",
+            "tsConfig": "projects/math-exp-string-eval/tsconfig.spec.json",
+            "karmaConfig": "projects/math-exp-string-eval/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/math-exp-string-eval/tsconfig.lib.json",
+              "projects/math-exp-string-eval/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "math-exp-evaluator-app"

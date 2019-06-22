@@ -1,0 +1,29 @@
+{
+  "name": "math-exp-string-eval",
+  "version": "1.0.0",
+  "description": "An Angular service for evaluating mathematical string expressions.",
+  "author": "Dame Lyngdoh <damelyngdoh@outlook.com>",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  },
+  "keywords": [
+    "angular",
+    "library",
+    "evaluate",
+    "math",
+    "typescript",
+    "expression"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/DameLyngdoh/math-exp-string-eval-angular",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DameLyngdoh/math-exp-string-eval-angular"
+  },
+  "bugs": {
+    "url": "https://github.com/DameLyngdoh/math-exp-string-eval-angular/issues"
+  },
+  "dependencies": {
+  }
+}
